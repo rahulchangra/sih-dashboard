@@ -6,7 +6,8 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Stack from '@mui/material/Stack';
 import type { SxProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import { ListBulletsIcon } from '@phosphor-icons/react/dist/ssr/ListBullets';
+// ✅ Replaced ListBulletsIcon with HeartbeatIcon
+import { HeartbeatIcon } from '@phosphor-icons/react/dist/ssr/Heartbeat';
 
 export interface TasksProgressProps {
   sx?: SxProps;
@@ -18,15 +19,26 @@ export function TasksProgress({ value, sx }: TasksProgressProps): React.JSX.Elem
     <Card sx={sx}>
       <CardContent>
         <Stack spacing={2}>
-          <Stack direction="row" sx={{ alignItems: 'flex-start', justifyContent: 'space-between' }} spacing={3}>
+          <Stack
+            direction="row"
+            sx={{ alignItems: 'flex-start', justifyContent: 'space-between' }}
+            spacing={3}
+          >
             <Stack spacing={1}>
               <Typography color="text.secondary" gutterBottom variant="overline">
-                Task Progress
+                Recovery Score
               </Typography>
               <Typography variant="h4">{value}%</Typography>
             </Stack>
-            <Avatar sx={{ backgroundColor: 'var(--mui-palette-warning-main)', height: '56px', width: '56px' }}>
-              <ListBulletsIcon fontSize="var(--icon-fontSize-lg)" />
+            <Avatar
+              sx={{
+                backgroundColor: 'var(--mui-palette-warning-main)',
+                height: '56px',
+                width: '56px'
+              }}
+            >
+              {/* ✅ Now shows heartbeat icon */}
+              <HeartbeatIcon fontSize="var(--icon-fontSize-lg)" />
             </Avatar>
           </Stack>
           <div>

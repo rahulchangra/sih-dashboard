@@ -25,7 +25,7 @@ export default function Page(): React.JSX.Element {
           xs: 12,
         }}
       >
-        <Budget diff={12} trend="up" sx={{ height: '100%' }} value="$24k" />
+        <Budget diff={12} trend="up" sx={{ height: '100%' }} value="75%" />
       </Grid>
       <Grid
         size={{
@@ -34,7 +34,7 @@ export default function Page(): React.JSX.Element {
           xs: 12,
         }}
       >
-        <TotalCustomers diff={16} trend="down" sx={{ height: '100%' }} value="1.6k" />
+        <TotalCustomers diff={16} trend="down" sx={{ height: '100%' }} value="10 hrs" />
       </Grid>
       <Grid
         size={{
@@ -52,7 +52,7 @@ export default function Page(): React.JSX.Element {
           xs: 12,
         }}
       >
-        <TotalProfit sx={{ height: '100%' }} value="$15k" />
+        <TotalProfit sx={{ height: '100%' }} value="3/5" />
       </Grid>
       <Grid
         size={{

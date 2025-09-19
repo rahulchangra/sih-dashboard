@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import { useColorScheme } from '@mui/material/styles';
 
 import { NoSsr } from '@/components/core/no-ssr';
@@ -18,16 +19,61 @@ export interface LogoProps {
   width?: number;
 }
 
-export function Logo({ color = 'dark', emblem, height = HEIGHT, width = WIDTH }: LogoProps): React.JSX.Element {
+export function Logo({
+  color = 'dark',
+  emblem,
+  height = 10,
+  width = 30,
+}: LogoProps): React.JSX.Element {
   let url: string;
 
   if (emblem) {
-    url = color === 'light' ? '/assets/logo-emblem.svg' : '/assets/logo-emblem--dark.svg';
+    url =
+      color === 'light'
+        ? '/assets/untitled design.png'
+        : '/assets/untitled design.png';
   } else {
-    url = color === 'light' ? '/assets/logo.svg' : '/assets/logo--dark.svg';
+    url =
+      color === 'light'
+        ? '/assets/untitled design.png'
+        : '/assets/untitled design.png';
   }
 
-  return <Box alt="logo" component="img" height={height} src={url} width={width} />;
+  return (
+    <Box display="flex" alignItems="center" gap={1}>
+      {/* Logo Image */}
+      <Box
+        alt="logo"
+        component="img"
+        src={url}
+        sx={{
+          height: height,
+          width: 'auto',
+          maxWidth: width,
+          objectFit: 'contain',
+        }}
+      />
+
+      {/* Logo Text */}
+      <Typography
+        component="span" // ✅ makes sure it's plain text, not link-like
+        variant="h6"
+        sx={{
+          fontWeight: 'bold',
+          color: 'white',
+          textDecoration: 'none', // ✅ remove underline
+          transition: 'transform 0.2s ease-in-out',
+          cursor: 'pointer',
+          '&:hover': {
+            transform: 'scale(1.1)', // zoom on hover
+            textDecoration: 'none',  // ✅ no underline on hover too
+          },
+        }}
+      >
+        Mindura
+      </Typography>
+    </Box>
+  );
 }
 
 export interface DynamicLogoProps {

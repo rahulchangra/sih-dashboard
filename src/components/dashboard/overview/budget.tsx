@@ -7,7 +7,8 @@ import type { SxProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { ArrowDownIcon } from '@phosphor-icons/react/dist/ssr/ArrowDown';
 import { ArrowUpIcon } from '@phosphor-icons/react/dist/ssr/ArrowUp';
-import { CurrencyDollarIcon } from '@phosphor-icons/react/dist/ssr/CurrencyDollar';
+// ✅ Use PillIcon instead of CurrencyDollarIcon
+import { PillIcon } from '@phosphor-icons/react/dist/ssr/Pill';
 
 export interface BudgetProps {
   diff?: number;
@@ -24,15 +25,26 @@ export function Budget({ diff, trend, sx, value }: BudgetProps): React.JSX.Eleme
     <Card sx={sx}>
       <CardContent>
         <Stack spacing={3}>
-          <Stack direction="row" sx={{ alignItems: 'flex-start', justifyContent: 'space-between' }} spacing={3}>
+          <Stack
+            direction="row"
+            sx={{ alignItems: 'flex-start', justifyContent: 'space-between' }}
+            spacing={3}
+          >
             <Stack spacing={1}>
               <Typography color="text.secondary" variant="overline">
-                Budget
+                Medication Progress
               </Typography>
               <Typography variant="h4">{value}</Typography>
             </Stack>
-            <Avatar sx={{ backgroundColor: 'var(--mui-palette-primary-main)', height: '56px', width: '56px' }}>
-              <CurrencyDollarIcon fontSize="var(--icon-fontSize-lg)" />
+            <Avatar
+              sx={{
+                backgroundColor: 'var(--mui-palette-primary-main)',
+                height: '56px',
+                width: '56px'
+              }}
+            >
+              {/* ✅ Changed to PillIcon */}
+              <PillIcon fontSize="var(--icon-fontSize-lg)" />
             </Avatar>
           </Stack>
           {diff ? (
