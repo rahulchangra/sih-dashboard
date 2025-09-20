@@ -73,7 +73,7 @@ export function Layout({ children }: LayoutProps): React.JSX.Element {
           >
             <Typography color="inherit" sx={{ fontSize: '24px', lineHeight: '32px', textAlign: 'center' }} variant="h1">
               Welcome to{' '}
-              <Box component="span" sx={{ color: '#2196F3' }}>
+              <Box component="span" sx={{ color: '#000000' }}>
                 Mindura
               </Box>
             </Typography>

@@ -60,7 +60,7 @@ export function Logo({
         variant="h6"
         sx={{
           fontWeight: 'bold',
-          color: '#000000', // Changed to black
+          color: color === 'light' ? '#000000' : '#FFFFFF',
           textDecoration: 'none', // ✅ remove underline
           transition: 'transform 0.2s ease-in-out',
           cursor: 'pointer',
