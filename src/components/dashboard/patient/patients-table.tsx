@@ -22,7 +22,7 @@ function noop(): void {
   // do nothing
 }
 
-export interface Customer {
+export interface Patient {
   id: string;
   avatar: string;
   name: string;
@@ -32,21 +32,21 @@ export interface Customer {
   createdAt: Date;
 }
 
-interface CustomersTableProps {
+interface PatientsTableProps {
   count?: number;
   page?: number;
-  rows?: Customer[];
+  rows?: Patient[];
   rowsPerPage?: number;
 }
 
-export function CustomersTable({
+export function PatientsTable({
   count = 0,
   rows = [],
   page = 0,
   rowsPerPage = 0,
-}: CustomersTableProps): React.JSX.Element {
+}: PatientsTableProps): React.JSX.Element {
   const rowIds = React.useMemo(() => {
-    return rows.map((customer) => customer.id);
+    return rows.map((patient) => patient.id);
   }, [rows]);
 
   const { selectAll, deselectAll, selectOne, deselectOne, selected } = useSelection(rowIds);
@@ -81,35 +81,35 @@ export function CustomersTable({
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => {
-              const isSelected = selected?.has(row.id);
+            {rows.map((patient) => {
+              const isSelected = selected?.has(patient.id);
 
               return (
-                <TableRow hover key={row.id} selected={isSelected}>
+                <TableRow hover key={patient.id} selected={isSelected}>
                   <TableCell padding="checkbox">
                     <Checkbox
                       checked={isSelected}
                       onChange={(event) => {
                         if (event.target.checked) {
-                          selectOne(row.id);
+                          selectOne(patient.id);
                         } else {
-                          deselectOne(row.id);
+                          deselectOne(patient.id);
                         }
                       }}
                     />
                   </TableCell>
                   <TableCell>
                     <Stack sx={{ alignItems: 'center' }} direction="row" spacing={2}>
-                      <Avatar src={row.avatar} />
-                      <Typography variant="subtitle2">{row.name}</Typography>
+                      <Avatar src={patient.avatar} />
+                      <Typography variant="subtitle2">{patient.name}</Typography>
                     </Stack>
                   </TableCell>
-                  <TableCell>{row.email}</TableCell>
+                  <TableCell>{patient.email}</TableCell>
                   <TableCell>
-                    {row.address.city}, {row.address.state}, {row.address.country}
+                    {patient.address.city}, {patient.address.state}, {patient.address.country}
                   </TableCell>
-                  <TableCell>{row.phone}</TableCell>
-                  <TableCell>{dayjs(row.createdAt).format('MMM D, YYYY')}</TableCell>
+                  <TableCell>{patient.phone}</TableCell>
+                  <TableCell>{dayjs(patient.createdAt).format('MMM D, YYYY')}</TableCell>
                 </TableRow>
               );
             })}

@@ -7,17 +7,16 @@ import type { SxProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { ArrowDownIcon } from '@phosphor-icons/react/dist/ssr/ArrowDown';
 import { ArrowUpIcon } from '@phosphor-icons/react/dist/ssr/ArrowUp';
-// ✅ Replaced UsersIcon with GameControllerIcon
-import { GameControllerIcon } from '@phosphor-icons/react/dist/ssr/GameController';
+import { TimerIcon } from '@phosphor-icons/react/dist/ssr/Timer';
 
-export interface TotalCustomersProps {
+export interface TotalPatientsProps {
   diff?: number;
   trend: 'up' | 'down';
   sx?: SxProps;
   value: string;
 }
 
-export function TotalCustomers({ diff, trend, sx, value }: TotalCustomersProps): React.JSX.Element {
+export const TotalPatients = React.forwardRef<HTMLDivElement, TotalPatientsProps>(({ diff, trend, sx, value }, ref): React.JSX.Element => {
   const TrendIcon = trend === 'up' ? ArrowUpIcon : ArrowDownIcon;
   const trendColor =
     trend === 'up'
@@ -25,7 +24,7 @@ export function TotalCustomers({ diff, trend, sx, value }: TotalCustomersProps):
       : 'var(--mui-palette-error-main)';
 
   return (
-    <Card sx={sx}>
+    <Card ref={ref} sx={sx}>
       <CardContent>
         <Stack spacing={2}>
           <Stack
@@ -35,7 +34,7 @@ export function TotalCustomers({ diff, trend, sx, value }: TotalCustomersProps):
           >
             <Stack spacing={1}>
               <Typography color="text.secondary" variant="overline">
-                Game Time
+                Patient Time
               </Typography>
               <Typography variant="h4">{value}</Typography>
             </Stack>
@@ -46,8 +45,7 @@ export function TotalCustomers({ diff, trend, sx, value }: TotalCustomersProps):
                 width: '56px'
               }}
             >
-              {/* 🎮 Now shows Game Controller */}
-              <GameControllerIcon fontSize="var(--icon-fontSize-lg)" />
+              <TimerIcon fontSize="var(--icon-fontSize-lg)" />
             </Avatar>
           </Stack>
           {diff ? (
@@ -70,4 +68,4 @@ export function TotalCustomers({ diff, trend, sx, value }: TotalCustomersProps):
       </CardContent>
     </Card>
   );
-}
+});

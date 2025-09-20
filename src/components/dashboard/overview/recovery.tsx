@@ -9,14 +9,14 @@ import Typography from '@mui/material/Typography';
 // ✅ Replaced ListBulletsIcon with HeartbeatIcon
 import { HeartbeatIcon } from '@phosphor-icons/react/dist/ssr/Heartbeat';
 
-export interface TasksProgressProps {
+export interface RecoveryProps {
   sx?: SxProps;
   value: number;
 }
 
-export function TasksProgress({ value, sx }: TasksProgressProps): React.JSX.Element {
+export const Recovery = React.forwardRef<HTMLDivElement, RecoveryProps>(({ value, sx }, ref): React.JSX.Element => {
   return (
-    <Card sx={sx}>
+    <Card ref={ref} sx={sx}>
       <CardContent>
         <Stack spacing={2}>
           <Stack
@@ -32,7 +32,7 @@ export function TasksProgress({ value, sx }: TasksProgressProps): React.JSX.Elem
             </Stack>
             <Avatar
               sx={{
-                backgroundColor: 'var(--mui-palette-warning-main)',
+                backgroundColor: 'var(--mui-palette-error-main)',
                 height: '56px',
                 width: '56px'
               }}
@@ -48,4 +48,4 @@ export function TasksProgress({ value, sx }: TasksProgressProps): React.JSX.Elem
       </CardContent>
     </Card>
   );
-}
+});

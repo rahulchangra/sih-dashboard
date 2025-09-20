@@ -7,14 +7,14 @@ import type { SxProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { CalendarCheckIcon } from '@phosphor-icons/react/dist/ssr/CalendarCheck';
 
-export interface TotalProfitProps {
+export interface FollowUpProps {
   sx?: SxProps;
   value: string;
 }
 
-export function TotalProfit({ value, sx }: TotalProfitProps): React.JSX.Element {
+export const FollowUp = React.forwardRef<HTMLDivElement, FollowUpProps>(({ value, sx }, ref): React.JSX.Element => {
   return (
-    <Card sx={sx}>
+    <Card ref={ref} sx={sx}>
       <CardContent>
         <Stack
           direction="row"
@@ -40,4 +40,4 @@ export function TotalProfit({ value, sx }: TotalProfitProps): React.JSX.Element 
       </CardContent>
     </Card>
   );
-}
+});

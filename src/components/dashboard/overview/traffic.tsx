@@ -9,14 +9,12 @@ import { useTheme } from '@mui/material/styles';
 import type { SxProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import type { Icon } from '@phosphor-icons/react/dist/lib/types';
-import { DesktopIcon } from '@phosphor-icons/react/dist/ssr/Desktop';
-import { DeviceTabletIcon } from '@phosphor-icons/react/dist/ssr/DeviceTablet';
-import { PhoneIcon } from '@phosphor-icons/react/dist/ssr/Phone';
+import { PuzzlePieceIcon, BrainIcon, PencilSimpleIcon } from '@phosphor-icons/react';
 import type { ApexOptions } from 'apexcharts';
 
 import { Chart } from '@/components/core/chart';
 
-const iconMapping = { Desktop: DesktopIcon, Tablet: DeviceTabletIcon, Phone: PhoneIcon } as Record<string, Icon>;
+const iconMapping = { Maze: PuzzlePieceIcon, Memory: BrainIcon, 'Line-Drawing': PencilSimpleIcon } as Record<string, Icon>;
 
 export interface TrafficProps {
   chartSeries: number[];
@@ -24,12 +22,12 @@ export interface TrafficProps {
   sx?: SxProps;
 }
 
-export function Traffic({ chartSeries, labels, sx }: TrafficProps): React.JSX.Element {
+export const Traffic = React.forwardRef<HTMLDivElement, TrafficProps>(({ chartSeries, labels, sx }, ref): React.JSX.Element => {
   const chartOptions = useChartOptions(labels);
 
   return (
-    <Card sx={sx}>
-      <CardHeader title="Traffic source" />
+    <Card ref={ref} sx={sx}>
+      <CardHeader title="Today's usage" />
       <CardContent>
         <Stack spacing={2}>
           <Chart height={300} options={chartOptions} series={chartSeries} type="donut" width="100%" />
@@ -53,8 +51,7 @@ export function Traffic({ chartSeries, labels, sx }: TrafficProps): React.JSX.El
       </CardContent>
     </Card>
   );
-}
-
+});
 function useChartOptions(labels: string[]): ApexOptions {
   const theme = useTheme();
 

@@ -9,8 +9,8 @@
 ## Pages 
 
 - [Dashboard](https://material-kit-react.devias.io)
-- [Customers](https://material-kit-react.devias.io/dashboard/customers)
-- [Integrations](https://material-kit-react.devias.io/dashboard/integrations)
+- [Patients](https://material-kit-react.devias.io/dashboard/patients)
+- [Appointments](https://material-kit-react.devias.io/dashboard/appointments)
 - [Settings](https://material-kit-react.devias.io/dashboard/settings)
 - [Account](https://material-kit-react.devias.io/dashboard/account)
 - [Sign In](https://material-kit-react.devias.io/auth/sign-in)

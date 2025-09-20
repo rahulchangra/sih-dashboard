@@ -15,23 +15,23 @@ import type { ApexOptions } from 'apexcharts';
 
 import { Chart } from '@/components/core/chart';
 
-export interface SalesProps {
+export interface ProgressProps {
   chartSeries: { name: string; data: number[] }[];
   sx?: SxProps;
 }
 
-export function Sales({ chartSeries, sx }: SalesProps): React.JSX.Element {
+export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(({ chartSeries, sx }, ref): React.JSX.Element => {
   const chartOptions = useChartOptions();
 
   return (
-    <Card sx={sx}>
+    <Card ref={ref} sx={sx}>
       <CardHeader
         action={
           <Button color="inherit" size="small" startIcon={<ArrowClockwiseIcon fontSize="var(--icon-fontSize-md)" />}>
             Sync
           </Button>
         }
-        title="Sales"
+        title="Progress over time"
       />
       <CardContent>
         <Chart height={350} options={chartOptions} series={chartSeries} type="bar" width="100%" />
@@ -44,7 +44,7 @@ export function Sales({ chartSeries, sx }: SalesProps): React.JSX.Element {
       </CardActions>
     </Card>
   );
-}
+});
 
 function useChartOptions(): ApexOptions {
   const theme = useTheme();
@@ -67,15 +67,21 @@ function useChartOptions(): ApexOptions {
     xaxis: {
       axisBorder: { color: theme.palette.divider, show: true },
       axisTicks: { color: theme.palette.divider, show: true },
-      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      categories: [
+        'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun',
+        'Mon', 'Tue', 'Wed', 'Thu', 'Fri'
+      ],
       labels: { offsetY: 5, style: { colors: theme.palette.text.secondary } },
     },
     yaxis: {
       labels: {
-        formatter: (value) => (value > 0 ? `${value}K` : `${value}`),
+        formatter: (value) => `${value}`,
         offsetX: -10,
         style: { colors: theme.palette.text.secondary },
       },
+      min: 0,
+      max: 10,
+      tickAmount: 5, // This will create 6 labels: 0, 2, 4, 6, 8, 10
     },
   };
 }

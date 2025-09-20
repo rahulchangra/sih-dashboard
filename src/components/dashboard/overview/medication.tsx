@@ -10,19 +10,19 @@ import { ArrowUpIcon } from '@phosphor-icons/react/dist/ssr/ArrowUp';
 // ✅ Use PillIcon instead of CurrencyDollarIcon
 import { PillIcon } from '@phosphor-icons/react/dist/ssr/Pill';
 
-export interface BudgetProps {
+export interface MedicationProps {
   diff?: number;
   trend: 'up' | 'down';
   sx?: SxProps;
   value: string;
 }
 
-export function Budget({ diff, trend, sx, value }: BudgetProps): React.JSX.Element {
+export const Medication = React.forwardRef<HTMLDivElement, MedicationProps>(({ diff, trend, sx, value }, ref): React.JSX.Element => {
   const TrendIcon = trend === 'up' ? ArrowUpIcon : ArrowDownIcon;
   const trendColor = trend === 'up' ? 'var(--mui-palette-success-main)' : 'var(--mui-palette-error-main)';
 
   return (
-    <Card sx={sx}>
+    <Card ref={ref} sx={sx}>
       <CardContent>
         <Stack spacing={3}>
           <Stack
@@ -64,4 +64,4 @@ export function Budget({ diff, trend, sx, value }: BudgetProps): React.JSX.Eleme
       </CardContent>
     </Card>
   );
-}
+});
