@@ -1,90 +1,122 @@
-## [Devias Kit - React](https://material-kit-react.devias.io/)
+# Material Kit React
 
-![license](https://img.shields.io/badge/license-MIT-blue.svg)
+This is a Dashboard to monitor progress of patient. A modern dashboard template built with React and Next.js, designed for creating rich web applications.
 
-[![Devias Kit - React](https://github.com/devias-io/material-kit-react/blob/main/public/assets/thumbnail.png)](https://material-kit-react.devias.io/)
+## Installation
 
-> Free React Admin Dashboard made with [MUI's](https://mui.com) components, [React](https://reactjs.org) and of course [Next.js](https://github.com/vercel/next.js) to boost your app development process!
+To get started with this project, follow these steps:
 
-## Pages 
+### Prerequisites
 
-- [Dashboard](https://material-kit-react.devias.io)
-- [Patients](https://material-kit-react.devias.io/dashboard/patients)
-- [Appointments](https://material-kit-react.devias.io/dashboard/appointments)
-- [Settings](https://material-kit-react.devias.io/dashboard/settings)
-- [Account](https://material-kit-react.devias.io/dashboard/account)
-- [Sign In](https://material-kit-react.devias.io/auth/sign-in)
-- [Sign Up](https://material-kit-react.devias.io/auth/sign-up)
-- [Reset Password](https://material-kit-react.devias.io/auth/reset-password)
+Make sure you have the following installed:
 
-## Free Figma Community File
+- Node.js (LTS version recommended)
+- npm, yarn, pnpm, or bun (npm is used in the examples below)
 
-- [Duplicate File](https://www.figma.com/file/b3L1Np4RYiicZAOMopHNkm/Devias-Dashboard-Design-Library-Kit)
+### Clone the repository
 
-## Upgrade to PRO Version
+```bash
+git clone <repository-url>
+cd material-kit-react
+```
 
-We also have a pro version of this product which bundles even more pages and components if you want
-to save more time and design efforts :)
+### Install dependencies
 
-| Free Version (this one)  | [Devias Kit Pro](https://mui.com/store/items/devias-kit-pro/)                |
-| ------------------------ | :--------------------------------------------------------------------------- |
-| **8** Pages              | **80+** Pages                                                                |
-| ✔ Custom Authentication  | ✔ Authentication with **Amplify**, **Auth0**, **Firebase** and **Supabase**  |
-| -                        | ✔ Vite Version                                                               |
-| -                        | ✔ Dark Mode Support                                                          |
-| -                        | ✔ Complete Users Flows                                                       |
-| -                        | ✔ Premium Technical Support                                                  |
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
 
-## Quick start
+## Setup
 
-- Clone the repo: `git clone https://github.com/devias-io/material-kit-react.git`
-- Make sure your Node.js and npm versions are up to date
-- Install dependencies: `npm install` or `yarn`
-- Start the server: `npm run dev` or `yarn dev`
-- Open browser: `http://localhost:3000`
+### Environment Variables
 
-## File Structure
-
-Within the download you'll find the following directories and files:
+This project may use environment variables for configuration. Create a `.env.local` file in the root of the project based on `.env.example` (if available) or the following example:
 
 ```
-┌── .editorconfig
-├── .eslintrc.js
+NEXT_PUBLIC_LOG_LEVEL=ALL
+# Add any other environment variables here
+```
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Project Structure
+
+```
+.
+├── .editorconfig
+├── .gitattributes
 ├── .gitignore
+├── .prettierignore
 ├── CHANGELOG.md
+├── eslint.config.mjs
 ├── LICENSE.md
-├── next-env.d.ts
-├── next.config.js
+├── next.config.mjs
+├── package-lock.json
 ├── package.json
+├── pnpm-lock.yaml
+├── prettier.config.mjs
 ├── README.md
 ├── tsconfig.json
-├── public
-└── src
-	├── components
-	├── contexts
-	├── hooks
-	├── lib
-	├── styles
-	├── types
-	└── app
-		├── layout.tsx
-		├── page.tsx
-		├── auth
-		└── dashboard
+├── public/
+│   ├── favicon.ico
+│   └── assets/
+│       └── ... (image assets)
+└── src/
+    ├── config.ts
+    ├── paths.ts
+    ├── app/
+    │   ├── layout.tsx
+    │   ├── not-found.tsx
+    │   ├── page.tsx
+    │   ├── auth/
+    │   │   └── ... (auth pages)
+    │   ├── dashboard/
+    │   │   └── ... (dashboard pages)
+    │   └── errors/
+    │       └── ... (error pages)
+    ├── components/
+    │   ├── auth/
+    │   │   └── ... (auth components)
+    │   ├── core/
+    │   │   └── ... (core components)
+    │   └── dashboard/
+    │       └── ... (dashboard components)
+    ├── contexts/
+    │   └── user-context.tsx
+    ├── hooks/
+    │   └── ... (custom hooks)
+    ├── lib/
+    │   └── ... (utility functions)
+    ├── styles/
+    │   └── ... (styling files)
+    └── types/
+        └── ... (type definitions)
 ```
 
-## Resources
+## Author
 
-- More freebies like this one: https://devias.io
-
-## Reporting Issues:
-
-- [Github Issues Page](https://github.com/devias-io/material-kit-react/issues)
-
-## License
-
-- Licensed under [MIT](https://github.com/devias-io/material-kit-react/blob/main/LICENSE.md)
-
-## Contact Us
-
-- Email Us: support@deviasio.zendesk.com
+Rahul Changra

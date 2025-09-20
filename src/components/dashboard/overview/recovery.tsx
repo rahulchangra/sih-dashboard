@@ -49,3 +49,5 @@ export const Recovery = React.forwardRef<HTMLDivElement, RecoveryProps>(({ value
     </Card>
   );
 });
+
+Recovery.displayName = 'Recovery';

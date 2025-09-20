@@ -41,3 +41,5 @@ export const FollowUp = React.forwardRef<HTMLDivElement, FollowUpProps>(({ value
     </Card>
   );
 });
+
+FollowUp.displayName = 'FollowUp';

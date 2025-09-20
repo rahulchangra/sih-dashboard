@@ -65,3 +65,5 @@ export const Medication = React.forwardRef<HTMLDivElement, MedicationProps>(({ d
     </Card>
   );
 });
+
+Medication.displayName = 'Medication';

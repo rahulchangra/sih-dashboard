@@ -24,7 +24,7 @@ export function Layout({ children }: LayoutProps): React.JSX.Element {
       <Box sx={{ display: 'flex', flex: '1 1 auto', flexDirection: 'column' }}>
         <Box sx={{ p: 3 }}>
           <Box component={RouterLink} href={paths.home} sx={{ display: 'inline-block', fontSize: 0 }}>
-            <DynamicLogo colorDark="light" colorLight="dark" height={32} width={122} />
+            <DynamicLogo colorDark="light" colorLight="light" height={32} width={122} />
           </Box>
         </Box>
         <Box sx={{ alignItems: 'center', display: 'flex', flex: '1 1 auto', justifyContent: 'center', p: 3 }}>
@@ -38,29 +38,46 @@ export function Layout({ children }: LayoutProps): React.JSX.Element {
           color: 'var(--mui-palette-common-white)',
           display: { xs: 'none', lg: 'flex' },
           justifyContent: 'center',
-          p: 3,
+          // p: 3, // Removed padding to allow logo to fit whole screen
         }}
       >
-        <Stack spacing={3}>
-          <Stack spacing={1}>
-            <Typography color="inherit" sx={{ fontSize: '24px', lineHeight: '32px', textAlign: 'center' }} variant="h1">
-              Welcome to{' '}
-              <Box component="span" sx={{ color: '#15b79e' }}>
-                Devias Kit
-              </Box>
-            </Typography>
-            <Typography align="center" variant="subtitle1">
-              A professional template that comes with ready-to-use MUI components.
-            </Typography>
-          </Stack>
-          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <Stack spacing={3} sx={{ height: '100%', width: '100%', position: 'relative' }}>
+          <Box
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              height: '100%',
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
             <Box
               component="img"
-              alt="Widgets"
-              src="/assets/auth-widgets.png"
-              sx={{ height: 'auto', width: '100%', maxWidth: '600px' }}
+              alt="Logo"
+              src="/assets/Untitled design.png"
+              sx={{ height: '100%', width: '100%', objectFit: 'contain' }}
             />
           </Box>
+          <Stack
+            spacing={1}
+            sx={{
+              position: 'absolute',
+              top: '120px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              zIndex: 1,
+            }}
+          >
+            <Typography color="inherit" sx={{ fontSize: '24px', lineHeight: '32px', textAlign: 'center' }} variant="h1">
+              Welcome to{' '}
+              <Box component="span" sx={{ color: '#2196F3' }}>
+                Mindura
+              </Box>
+            </Typography>
+          </Stack>
         </Stack>
       </Box>
     </Box>

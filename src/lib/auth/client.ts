@@ -37,12 +37,15 @@ export interface ResetPasswordParams {
 }
 
 class AuthClient {
+  _isAuthenticated = false;
+
   async signUp(_: SignUpParams): Promise<{ error?: string }> {
     // Make API request
 
     // We do not handle the API, so we'll just generate a token and store it in localStorage.
     const token = generateToken();
     localStorage.setItem('custom-auth-token', token);
+    this._isAuthenticated = true; // Set authenticated state on sign up
 
     return {};
   }
@@ -63,6 +66,7 @@ class AuthClient {
 
     const token = generateToken();
     localStorage.setItem('custom-auth-token', token);
+    this._isAuthenticated = true; // Set authenticated state on sign in
 
     return {};
   }
@@ -78,10 +82,10 @@ class AuthClient {
   async getUser(): Promise<{ data?: User | null; error?: string }> {
     // Make API request
 
-    // We do not handle the API, so just check if we have a token in localStorage.
+    // We do not handle the API, so just check if we have a token in localStorage and if we are internally authenticated.
     const token = localStorage.getItem('custom-auth-token');
 
-    if (!token) {
+    if (!token || !this._isAuthenticated) {
       return { data: null };
     }
 
@@ -90,6 +94,7 @@ class AuthClient {
 
   async signOut(): Promise<{ error?: string }> {
     localStorage.removeItem('custom-auth-token');
+    this._isAuthenticated = false; // Clear authenticated state on sign out
 
     return {};
   }

@@ -46,6 +46,8 @@ export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(({ chart
   );
 });
 
+Progress.displayName = 'Progress';
+
 function useChartOptions(): ApexOptions {
   const theme = useTheme();
 

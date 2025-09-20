@@ -52,6 +52,8 @@ export const Traffic = React.forwardRef<HTMLDivElement, TrafficProps>(({ chartSe
     </Card>
   );
 });
+
+Traffic.displayName = 'Traffic';
 function useChartOptions(labels: string[]): ApexOptions {
   const theme = useTheme();
 

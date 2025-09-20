@@ -69,3 +69,5 @@ export const TotalPatients = React.forwardRef<HTMLDivElement, TotalPatientsProps
     </Card>
   );
 });
+
+TotalPatients.displayName = 'TotalPatients';
