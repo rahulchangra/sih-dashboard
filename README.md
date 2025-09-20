@@ -1,4 +1,4 @@
-# Material Kit React
+# Medical Dashboard
 
 This is a Dashboard to monitor progress of patient. A modern dashboard template built with React and Next.js, designed for creating rich web applications.
 
