@@ -17,6 +17,7 @@ export interface LogoProps {
   emblem?: boolean;
   height?: number;
   width?: number;
+  textColor?: string; // Added textColor prop
 }
 
 export function Logo({
@@ -24,6 +25,7 @@ export function Logo({
   emblem,
   height = 10,
   width = 30,
+  textColor = 'white', // Default to white if not provided
 }: LogoProps): React.JSX.Element {
   let url: string;
 
@@ -56,17 +58,17 @@ export function Logo({
 
       {/* Logo Text */}
       <Typography
-        component="span" // ✅ makes sure it's plain text, not link-like
+        component="span" 
         variant="h6"
         sx={{
           fontWeight: 'bold',
-          color: color === 'light' ? '#000000' : '#FFFFFF',
-          textDecoration: 'none', // ✅ remove underline
+          color: textColor, // Use textColor prop here
+          textDecoration: 'none',
           transition: 'transform 0.2s ease-in-out',
           cursor: 'pointer',
           '&:hover': {
-            transform: 'scale(1.1)', // zoom on hover
-            textDecoration: 'none',  // ✅ no underline on hover too
+            transform: 'scale(1.1)', 
+            textDecoration: 'none', 
           },
         }}
       >
@@ -82,6 +84,7 @@ export interface DynamicLogoProps {
   emblem?: boolean;
   height?: number;
   width?: number;
+  textColor?: string; // Added textColor prop
 }
 
 export function DynamicLogo({
@@ -89,6 +92,7 @@ export function DynamicLogo({
   colorLight = 'dark',
   height = HEIGHT,
   width = WIDTH,
+  textColor, // Destructure textColor
   ...props
 }: DynamicLogoProps): React.JSX.Element {
   const { colorScheme } = useColorScheme();
@@ -96,7 +100,7 @@ export function DynamicLogo({
 
   return (
     <NoSsr fallback={<Box sx={{ height: `${height}px`, width: `${width}px` }} />}>
-      <Logo color={color} height={height} width={width} {...props} />
+      <Logo color={color} height={height} width={width} textColor={textColor} {...props} />
     </NoSsr>
   );
 }
